@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mainApp',
     'praiseMeApp',
+    'account',
 ]
 
 MIDDLEWARE = [
@@ -89,6 +90,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'account.RedUser'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
