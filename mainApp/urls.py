@@ -15,6 +15,4 @@ path('postupdate/<int:post_id>', views.postupdate, name="postupdate"),
 path('postdelete/<int:post_id>', views.postdelete, name="postdelete"),
 path('commentcreate/<int:post_id>', views.commentcreate, name="commentcreate"),
 path('commentdelete/<int:post_id>', views.commentdelete, name="commentdelete"),
-path('signup', views.signup, name = "signup"),
-path('signin', views.signin, name="signin"),
     ]

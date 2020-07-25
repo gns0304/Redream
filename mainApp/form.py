@@ -1,17 +1,12 @@
 from django import forms
-from .models import HelpPost, DonatorComment, ReceiverComment
+from .models import HelpPost, helpComment
 
 class PostingForm(forms.ModelForm):
     class Meta:
         model = HelpPost
         fields = ['deadLine', 'description']
 
-class DonatorCommentForm(forms.ModelForm):
+class HelpCommentForm(forms.ModelForm):
     class Meta:
-        model = DonatorComment
-        fields = ['body']
-
-class ReceiverCommentForm(forms.ModelForm):
-    class Meta:
-        model = ReceiverComment
+        model = helpComment
         fields = ['body']

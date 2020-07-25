@@ -3,6 +3,11 @@ from django.contrib.auth.models import AbstractUser
 
 # 기본 User
 class RedUser(AbstractUser):
+    IDENTIFICATION = (
+        ('reciever', '수혈자'),
+        ('donator', '헌혈자'),
+    )
+
     # 닉네임
     nickname = models.CharField(max_length = 20, blank = False, null = False, verbose_name = "닉네임")
 
@@ -14,14 +19,3 @@ class RedUser(AbstractUser):
 
     # 위치
     Location = models.CharField(max_length = 100, blank = False, null =False, verbose_name = "위치")
-
-
-# 헌혈자
-class Donator(RedUser):
-    # 헌혈 횟수
-    donateCount = models.PositiveIntegerField(verbose_name = "헌혈 횟수")
-
-
-class Receiver(RedUser):
-    # 특이사항
-    description = models.TextField(blank = True, null = True, verbose_name = "특이사항")
