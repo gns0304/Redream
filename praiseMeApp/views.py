@@ -1,17 +1,17 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-from .models import PraiseMePost, DonatorPraiseMeComment, ReceiverPraiseMeComment
-from .form import PostingForm
 
+from .models import PraiseMePost, praiseMeComment
+from .form import PostingForm
 
 # Create your views here.
 
 def main(request):
-    post = Post.object.all()
-    return render(request, 'praiseMeApp/main.html', {'posts':posts})
+    posts = PraiseMePost.objects.all()
+    return render(request, 'main.html', {'posts':posts})
 
-def create(request):
+def praisePostCreate(request):
     if request.method == "POST":
         form = PostingForm(request.POST)
         if form.is_valid():
@@ -20,7 +20,10 @@ def create(request):
             return redirect('main')
     else:
         form = PostingForm()
-        return render(request, 'praiseMeApp/create.html', {'form', form})
+        return render(request, 'create.html', {'form', form})
+
+def praisePostNew(request):
+    
 
 def update(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -32,4 +35,4 @@ def update(request, pk):
             return redirect('main')
     else:
         form = PostingForm(instance=post)
-        return render(request, 'praiseMeApp/create.html', {'form': form})
+        return render(request, 'create.html', {'form': form})
