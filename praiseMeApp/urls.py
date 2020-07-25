@@ -1,17 +1,16 @@
 from django.urls import path, include
 from django.conf import settings
-from praiseMeApp import views
+import mainApp.views
 
 urlpatterns = [
-    path('', praiseMeApp.views.create, name='main'),
-    path('layout/', praiseMeApp.views.layout, name='layout'),
-    path('board/', praiseMeApp.views.board, name='board'),
-    path('create', praiseMeApp.views.create, name='create'),
-    path('read/', praiseMeApp.views.read, name='read'),
-    path('update/<int:pk>', praiseMeApp.views.update, name='update'),
-    path('delete/<int:pk>', praiseMeApp.views.delete, name='delete'),
-    path('signin', praiseMeApp.views.signin, name='signin'),
-    path('signup', praiseMeApp.views.signup, name='signup'),
-    path('commentupdate/<int:pk>', praiseMeApp.views.commentupdate, name='commentupdate'),
-    path('commentdelete/<int:pk>', praiseMeApp.views.commentdelete, name='commentdelete')                                         
-]
+path('', mainApp.views.index, name="index"), #리다이렉트용 : done
+path('list', mainApp.views.postList, name="list"), #리다이렉트용 : done
+path('postnew', mainApp.views.postnew, name="postnew") , #리다이렉트용 : done
+path('postcreate', mainApp.views.postcreate, name="postcreate"), # done
+path('detail/<int:post_id>', mainApp.views.detail, name="detail"), # done
+path('postedit/<int:post_id>', mainApp.views.postedit, name="postedit"), #리다이렉트용
+path('postupdate/<int:post_id>', mainApp.views.postupdate, name="postupdate"),
+path('postdelete/<int:post_id>', mainApp.views.postdelete, name="postdelete"),
+path('commentcreate/<int:post_id>', mainApp.views.commentcreate, name="commentcreate"),
+path('commentdelete/<int:post_id>', mainApp.views.commentdelete, name="commentdelete"),
+    ]
