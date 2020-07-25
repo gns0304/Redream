@@ -8,4 +8,5 @@ import mainApp.urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('main/', include(mainApp.urls))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
