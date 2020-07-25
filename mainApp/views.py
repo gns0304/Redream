@@ -2,9 +2,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.contrib.auth import get_user_model
 
-from account.models import Donator, Receiver
-from .models import HelpPost, DonatorComment, ReceiverComment
-from .form import PostingForm, DonatorCommentForm, ReceiverCommentForm
+from account.models import RedUser
+from .models import HelpPost, helpComment
+from .form import PostingForm, HelpCommentForm
 
 def index(request):
     return render(request, 'index.html')
@@ -15,13 +15,9 @@ def postList(request):
 
 def detail(request, post_id):
     post = get_object_or_404(HelpPost, pk=post_id)
-    
-    donatorComments = DonatorComment.objects.filter(post_id=post_id).order_by('-pub_data')
-    receiverComments = receiverComment.objects.filter(post_id=post_id).order_by('-pub_data')
+    commentForm = HelpCommentForm()
+    comments = helpComment.objects.filter(post_id=post_id).order_by('-pub_date')
 
-    tot
-
-    commentForm = commentFormReturn(request)
 
     return render(request, 'detail.html', {'post':post, 'commentForm':commentForm})
 
@@ -64,20 +60,16 @@ def postdelete(request, post_id):
     target_post.delete()
     return redirect('list')
 
-def commenting(request, post_id):
-    
+def commentcreate(request, post_id):
+    new_comment = helpComment()
+    new_comment.author = request.get_user_model()
+    new_comment.body = request.POST['body']
+    new_comment.pub_date = timezone.datetime.now()
+    new_comment.save()
 
+    return redirect('/detail/' + str(post_id))
 
-def commentFormReturn(request):
-    userInfo = request.user.get_user_model()
-
-    if(type(userInfo) == Donator):
-        commentForm = DonatorCommentForm()
-
-    elif(type(userInfo) == Receiver):
-        commentForm = ReceiverCommentForm()
-    
-    else:
-        commentForm = None
-    
-    return commentForm
+def commentdelete(request, post_id, comment_id):
+    target_comment = get_object_or_404(helpComment, pk=comment_id)
+    target_comment.delete()
+    return redirect('/detail/' + str(post_id))
