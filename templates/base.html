@@ -16,13 +16,40 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/style.css">
 
     {% block head_default %}
     {% endblock %}
     
 </head>
+<header>
+<div id = "logo">
+</div>
+</header>
 
-<body>
+<nav>
+
+    <ul id="nav">
+        <div id ="navd">
+        <li class = "nav_list">
+                        <a href="#blank">
+            헌혈공여리스트
+                                    </a>
+        </li>
+        <li class = "nav_list">
+                        <a href="#blank">
+            지정헌혈요청하기
+                                    </a>
+        </li>
+        <li class = "nav_list">
+            <a href="#blank">
+            헌혈요청리스트
+                </a>
+        </li>
+            </div>
+    </ul>
+
+</nav>
     
     {% block content %}
     {% endblock %}

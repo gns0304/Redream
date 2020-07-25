@@ -1,0 +1,40 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+body {
+
+    font-family: "Noto Sans KR", sans-serif;
+
+}
+
+#logo {
+    background-image: url("../mainApp/static/logo.gif");
+    width: 380px;
+    height:80px;
+    margin : 50px 0 15px 10%;
+}
+
+.nav_list{
+    list-style: none;
+    background-color: #e60012;
+    color : white;
+    text-decoration: none;
+    text-align: center;
+    width : 200px;
+    height : 50px;
+    float:left;
+    text-align: center;
+    padding-top : 12px;
+    font-size : 13pt;
+}
+
+#nav {
+    background-color: #e60012;
+    width : 80%;
+    height : 50px;
+    margin: 0 auto;
+    border-radius: 30px;
+}
+
+#navd{width:600px; height:50px; margin : 0 auto;}
+
+a:hover {text-decoration: none;}
